@@ -9,7 +9,7 @@ from fuelcell import utils
 from fuelcell.model import Datum
 
 dlm_default = utils.dlm_default
-col_default_labels = {'current':'i', 'potential':'v', 'time':'t', 'current_err':'i_sd', 'potential_err':'v_sd', 'overpotential':'eta', 'tafelcurrent':'log(i)', 'realcurr':'real', 'imagcurr':'imag'}
+col_default_labels = {'current':'i', 'potential':'v', 'time':'t', 'current_err':'i_sd', 'potential_err':'v_sd', 'overpotential':'eta', 'tafelcurrent':'log(ioi)', 'realcurr':'real', 'imagcurr':'imag'}
 col_default_ids = {'current':2, 'potential':1, 'time':0, 'current_err':2, 'potential_err':3, 'overpotential':2, 'tafelcurrent':3}
 ref_electrodes = {'she':0, 'sce':0.241}
 thermo_potentials = {'none':0, 'oer':1.23}
@@ -373,7 +373,7 @@ def lsv_process(data=None, potential_column=0, current_column=1, area=5, referen
 			current = current / area
 			log_current = current - min(current) + 0.000001
 			log_current = np.log10(log_current)
-			processed = pd.DataFrame({'v':potential, 'i':current, 'eta':overpotential, 'log(i)':log_current})
+			processed = pd.DataFrame({'v':potential, 'i':current, 'eta':overpotential, 'log(ioi)':log_current})
 			d.set_processed_data(processed)
 			d.set_potential_data(potential)
 			d.set_overpotential_data(potential)
